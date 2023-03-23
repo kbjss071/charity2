@@ -4,12 +4,12 @@
 
 {% block content %}
 <div class="container">
-  <h1>Login</h1>
+  <h1>Sign Up</h1>
   <form method="POST" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
     {% endbuttons %}
   </form>
 </div>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- In your post_detail.html template -->
+<h1>{{ post.title }}</h1>
+<p>{{ post.description }}</p>
+<p>Target amount: {{ post.target_amount }}</p>
+<p>Current amount: {{ post.current_amount }}</p>
+<p>Donation progress: {{ post.get_donation_progress }}%</p>
+
+<form method="post" action="{% url 'donate' post.id %}">
+    {% csrf_token %}
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" step="0.01" min="0.01" required>
+    <button type="submit">Donate</button>
+</form>
+
+{% endblock %}
