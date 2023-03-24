@@ -8,7 +8,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Post(models.Model):
-    user = models.ForeignKey(User, related_names="posts", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="posts", on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(allow_unicode=True, unique=True)
     created_at = models.DateTimeField(auto_now=True)
@@ -25,15 +25,17 @@ class Post(models.Model):
     
     def get_donation_progress(self):
         return (self.current_amount/self.target_amount)*100
-
-    # def get_absolute_url(self):
-    #     return reverse(
-    #         "posts:single",
-    #         kwargs={
-    #             "slug": self.slug
-    #         }
-    #     )
     
     class Meta:
         ordering = ["-created_at"]
         unique_together = ["user", "title"]
+
+class donateMember(models.Model):
+    post = models.ForeignKey(Post, related_name='donorMember', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='post_donors', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+    
+    class Meta:
+        unique_together = ("post", "user")

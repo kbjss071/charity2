@@ -1,11 +1,12 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from posts.models import Post
 
 # Create your models here.
 class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    post = models.ForeignKey('charity.Post', related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
