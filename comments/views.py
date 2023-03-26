@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Comment
 from .forms import CommentForm
+from posts.models import Post
 
 @require_POST
 @login_required

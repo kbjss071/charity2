@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'posts',
     'comments',
     'rest_framework',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
