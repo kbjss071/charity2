@@ -25,4 +25,5 @@ urlpatterns = [
     path('posts/', include("posts.urls", namespace="posts")),
     path('secureLogout/', views.LogoutPage.as_view(), name="logout"),
     path('secureLogin/', views.LoginPage.as_view(), name="login"),
+    path('session-expired/', views.session_expired, name='session_expired'),
 ]
