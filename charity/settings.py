@@ -57,8 +57,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django_session_timeout.middleware.SessionTimeoutMiddleware',
-    'charity.middleware.SessionExpiredMiddleware',
+    # 'django_session_timeout.middleware.SessionTimeoutMiddleware',
+    # 'charity.middleware.SessionExpiredMiddleware',
 ]
 
 ROOT_URLCONF = 'charity.urls'
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'charity.wsgi.application'
+# WSGI_APPLICATION = 'charity.wsgi.application'
 
 
 # Database
@@ -154,7 +154,7 @@ LOGOUT_REDIRECT_URL = 'logout'
 
 
 # Setting up session
-SESSION_COOKIE_AGE = SESSION_EXPIRE_SECONDS = 30  # 30 minutes in seconds
+SESSION_COOKIE_AGE = SESSION_EXPIRE_SECONDS = 10  # 30 minutes in seconds
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_TIMEOUT_REDIRECT = '/session-expired/'
 SESSION_SAVE_EVERY_REQUEST = True
