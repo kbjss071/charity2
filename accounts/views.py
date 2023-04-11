@@ -16,16 +16,16 @@ class SignUp(CreateView):
     template_name = 'registration/register.html'
 
 
-# def user_login(request):
-#     if request.method == 'POST':
-#         form = AuthenticationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect('')
-#     else:
-#         form = AuthenticationForm()
-#     return render(request, 'registration/login.html', {'form': form})
+def user_login(request):
+    form = AuthenticationForm(data=request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'registration/login.html', {'form': form})
 
 class Profile(DetailView):
     model = models.User
