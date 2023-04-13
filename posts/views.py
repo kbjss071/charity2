@@ -106,3 +106,8 @@ def delete_post(request, pk):
         return redirect("posts:all")
 
     return render(request, "posts/post_confirm_delete.html", {"object": post})
+
+def post_detail(request, username, pk):
+    queryset = Post.objects.select_related("user", "group")
+    post = get_object_or_404(queryset, pk=pk, user__username__iexact=username)
+    return render(request, "posts/post_detail.html", {"post": post})
