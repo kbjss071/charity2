@@ -43,10 +43,10 @@ def post_detail(request, post_id):
     return render(request, 'post_detail.html', context)
 
 
-class PostList(SelectRelatedMixin, generic.ListView):
-    model = Post
-    # need to know what select_related is
-    select_related=("user")
+def post_list(request):
+    queryset = Post.objects.all().select_related('user')
+    context = {'object_list': queryset}
+    return render(request, 'posts/post_list.html', context)
 
 
 def user_posts(request, username):
