@@ -27,12 +27,12 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 {% if user.is_authenticated%}
-                <li><a class="nav-item nav-link btn btn-simple" href="{}">Create Post</a></li>
+                <li><a class="nav-item nav-link btn btn-simple" href="{% url 'posts:create' %}">Create Post</a></li>
                 <li><a class="nav-item nav-link btn btn-simple" href="{% url 'posts:all' %}">Post</a></li>
+                <li><a class="nav-item nav-link btn btn-simple" href="{% url 'accounts:profile'%}">Profile</a></li>
                 <li><a class="nav-item nav-link btn btn-simple" href="{% url 'accounts:logout' %}">Log Out</a></li>
                 {% else %}
                 <li><a class="nav-item nav-link btn btn-simple" href="{% url 'posts:all' %}">Post</a></li>
-                <li><a class="nav-item nav-link btn btn-simple" href="{}">Profile</a></li>
                 <li><a class="nav-item nav-link btn btn-simple" href="{% url 'accounts:login' %}">Log In</a></li>
                 <li><a class="nav-item nav-link btn btn-simple" href="{% url 'accounts:signup' %}">Sign Up</a></li>
                 {% endif %}
